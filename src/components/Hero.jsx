@@ -1,4 +1,4 @@
-import { ArrowRight, Play, ArrowUpRight, Search, Bell, MapPin, Star, ShieldCheck, Zap, Droplet, Snowflake, Tv, Compass, Navigation } from 'lucide-react';
+import { ArrowRight, Play, ArrowUpRight, Search, Bell, MapPin, Star, ShieldCheck, Bot, Zap, Activity, Settings, Compass, Navigation, Wallet } from 'lucide-react';
 
 export default function Hero({ handleNavigation }) {
   return (
@@ -17,63 +17,72 @@ export default function Hero({ handleNavigation }) {
           
           {/* Left side: Text and CTAs */}
           <div className="lg:col-span-6 text-center lg:text-left animate-fade-in-up">
-            <div className="inline-flex items-center gap-2 bg-blue-50 border border-blue-100 text-primary-light font-bold text-xs px-4 py-1.5 rounded-full mb-6 uppercase tracking-wider select-none">
-              <span className="flex h-2 w-2 rounded-full bg-cyan-400 animate-pulse"></span>
-              Google Play Official App
-            </div>
             
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-extrabold text-dark tracking-tight leading-tight">
               KITS <span className="text-primary-light">Service</span>
             </h1>
             <p className="mt-4 text-xl sm:text-2xl font-semibold text-slate-800 tracking-wide leading-snug">
-              Professional Home & Business Service Solutions
+              Professional Industrial Service Solutions
             </p>
             <p className="mt-6 text-base sm:text-lg text-slate-600 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-              Book certified electricians, plumbers, AC specialists, and home maintenance partners instantly. Track your technician live on a GPS map, pay securely inside the app, and access your full digital service records.
+              Book certified industrial electricians, mechanical piping technicians, HVAC engineers, and factory maintenance partners instantly. Track your industrial technicians live on a GPS map, approve workorders securely, and manage digital compliance logs.
             </p>
 
             {/* CTAs */}
-            <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <div className="mt-8 flex flex-wrap gap-4 justify-center lg:justify-start">
               
-              {/* Styled Mock Google Play download button */}
+              {/* Styled Mock Google Play button */}
               <button
                 onClick={() => handleNavigation('cta-download')}
-                className="flex items-center justify-center gap-3 bg-slate-900 hover:bg-slate-950 text-white font-bold py-3.5 px-6 rounded-2xl shadow-xl hover:-translate-y-0.5 transition-all duration-300 cursor-pointer group text-left border border-slate-800"
+                className="flex items-center gap-3 bg-slate-900 hover:bg-slate-950 text-white font-bold py-2.5 px-4 rounded-xl shadow-lg hover:-translate-y-0.5 transition-all duration-300 cursor-pointer text-left border border-slate-800"
               >
-                {/* Play Store SVG Icon */}
-                <svg className="w-6 h-6 text-white fill-current" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-white fill-current" viewBox="0 0 24 24">
                   <path d="M5,3H19A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5A2,2 0 0,1 3,3M17.5,12L8.5,7V17L17.5,12Z" />
                 </svg>
                 <div>
-                  <p className="text-[9px] uppercase font-bold text-slate-400 leading-none">Get it on</p>
-                  <p className="text-sm font-extrabold font-heading tracking-wide mt-1">Google Play</p>
+                  <p className="text-[8px] uppercase font-bold text-slate-400 leading-none">Get it on</p>
+                  <p className="text-xs font-extrabold font-heading tracking-wide mt-0.5">Google Play</p>
+                </div>
+              </button>
+
+              {/* Styled Mock App Store button */}
+              <button
+                onClick={() => handleNavigation('cta-download')}
+                className="flex items-center gap-3 bg-slate-900 hover:bg-slate-950 text-white font-bold py-2.5 px-4 rounded-xl shadow-lg hover:-translate-y-0.5 transition-all duration-300 cursor-pointer text-left border border-slate-800"
+              >
+                <svg className="w-5 h-5 text-white fill-current" viewBox="0 0 24 24">
+                  <path d="M18.71,19.5C17.88,20.74 17,21.95 15.66,21.97C14.32,22 13.89,21.18 12.37,21.18C10.84,21.18 10.37,21.95 9.1,22C7.79,22.05 6.8,20.68 5.96,19.47C4.25,17 2.94,12.45 4.7,9.39C5.57,7.87 7.13,6.91 8.82,6.88C10.1,6.86 11.32,7.75 12.11,7.75C12.89,7.75 14.37,6.68 15.92,6.84C16.57,6.87 18.39,7.1 19.56,8.82C19.47,8.88 17.39,10.1 17.41,12.63C17.44,15.65 20.06,16.66 20.1,16.67C20.08,16.74 19.67,18.11 18.71,19.5M15.97,4.17C16.63,3.37 17.07,2.28 16.95,1C16,1.04 14.9,1.6 14.24,2.38C13.68,3.04 13.19,4.14 13.34,5.39C14.39,5.47 15.4,4.88 15.97,4.17Z" />
+                </svg>
+                <div>
+                  <p className="text-[8px] uppercase font-bold text-slate-400 leading-none">Download on the</p>
+                  <p className="text-xs font-extrabold font-heading tracking-wide mt-0.5">App Store</p>
                 </div>
               </button>
               
               <button
                 onClick={() => handleNavigation('contact')}
-                className="flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-slate-800 hover:text-primary-light border border-slate-200 hover:border-blue-200 font-bold py-4 px-8 rounded-2xl shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 cursor-pointer"
+                className="flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-slate-800 hover:text-primary-light border border-slate-200 hover:border-blue-200 font-bold py-4 px-6 rounded-xl shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 cursor-pointer text-sm"
               >
                 Contact Us
                 <ArrowUpRight className="w-4 h-4 text-slate-400" />
               </button>
             </div>
 
-            {/* Play Store Indicators */}
+            {/* Platform Indicators */}
             <div className="mt-10 pt-8 border-t border-slate-100 flex flex-wrap justify-center lg:justify-start gap-8 items-center text-slate-500 text-sm">
               <div className="flex flex-col items-center lg:items-start">
-                <span className="font-heading font-bold text-2xl text-dark">4.8★</span>
-                <span>Play Store Rating</span>
+                <span className="font-heading font-bold text-2xl text-dark">Android & iOS</span>
+                <span>Supported Platforms</span>
               </div>
               <div className="h-8 w-px bg-slate-200 hidden sm:block"></div>
               <div className="flex flex-col items-center lg:items-start">
                 <span className="font-heading font-bold text-2xl text-dark">50K+</span>
-                <span>Downloads</span>
+                <span>Active Workorders</span>
               </div>
               <div className="h-8 w-px bg-slate-200 hidden sm:block"></div>
               <div className="flex flex-col items-center lg:items-start">
                 <span className="font-heading font-bold text-2xl text-dark">100%</span>
-                <span>Verified Partners</span>
+                <span>Certified Engineers</span>
               </div>
             </div>
           </div>
@@ -111,8 +120,8 @@ export default function Hero({ handleNavigation }) {
                   <div className="flex items-center gap-1.5">
                     <MapPin className="w-4 h-4 text-primary-light" />
                     <div>
-                      <p className="text-[8px] text-slate-400 uppercase font-bold tracking-wider leading-none">Location</p>
-                      <p className="text-[11px] font-bold text-dark mt-0.5">Sector 62, Noida ▾</p>
+                      <p className="text-[8px] text-slate-400 uppercase font-bold tracking-wider leading-none">Industrial Zone</p>
+                      <p className="text-[10px] font-bold text-dark mt-0.5 truncate max-w-[130px]">Akola Industrial Zone ▾</p>
                     </div>
                   </div>
                   <div className="relative">
@@ -125,37 +134,37 @@ export default function Hero({ handleNavigation }) {
                 <div className="px-4 mt-2">
                   <div className="bg-slate-100 rounded-xl p-2.5 flex items-center gap-2 text-slate-400 text-[11px]">
                     <Search className="w-3.5 h-3.5" />
-                    <span>Search for AC repair, plumber...</span>
+                    <span>Search for machinery repair, wiring...</span>
                   </div>
                 </div>
 
                 {/* Categories Row */}
                 <div className="px-4 mt-5">
-                  <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Service Categories</p>
+                  <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Industrial Categories</p>
                   <div className="grid grid-cols-4 gap-2 mt-2">
+                    <div className="flex flex-col items-center">
+                      <div className="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-500 shadow-sm">
+                        <Bot className="w-5 h-5 fill-indigo-500/10" />
+                      </div>
+                      <span className="text-[8px] font-bold text-slate-600 mt-1">Robotics</span>
+                    </div>
                     <div className="flex flex-col items-center">
                       <div className="w-10 h-10 rounded-xl bg-orange-50 flex items-center justify-center text-orange-500 shadow-sm">
                         <Zap className="w-5 h-5 fill-orange-500/10" />
                       </div>
-                      <span className="text-[8px] font-bold text-slate-600 mt-1">Electric</span>
-                    </div>
-                    <div className="flex flex-col items-center">
-                      <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-500 shadow-sm">
-                        <Droplet className="w-5 h-5 fill-blue-500/10" />
-                      </div>
-                      <span className="text-[8px] font-bold text-slate-600 mt-1">Plumbing</span>
-                    </div>
-                    <div className="flex flex-col items-center">
-                      <div className="w-10 h-10 rounded-xl bg-cyan-50 flex items-center justify-center text-cyan-500 shadow-sm">
-                        <Snowflake className="w-5 h-5 fill-cyan-500/10" />
-                      </div>
-                      <span className="text-[8px] font-bold text-slate-600 mt-1">AC Repair</span>
+                      <span className="text-[8px] font-bold text-slate-600 mt-1">EV Systems</span>
                     </div>
                     <div className="flex flex-col items-center">
                       <div className="w-10 h-10 rounded-xl bg-rose-50 flex items-center justify-center text-rose-500 shadow-sm">
-                        <Tv className="w-5 h-5 fill-rose-500/10" />
+                        <Activity className="w-5 h-5 fill-rose-500/10" />
                       </div>
-                      <span className="text-[8px] font-bold text-slate-600 mt-1">Appliance</span>
+                      <span className="text-[8px] font-bold text-slate-600 mt-1">Bio-Med</span>
+                    </div>
+                    <div className="flex flex-col items-center">
+                      <div className="w-10 h-10 rounded-xl bg-cyan-50 flex items-center justify-center text-cyan-500 shadow-sm">
+                        <Settings className="w-5 h-5 fill-cyan-500/10" />
+                      </div>
+                      <span className="text-[8px] font-bold text-slate-600 mt-1">Automation</span>
                     </div>
                   </div>
                 </div>
@@ -168,10 +177,10 @@ export default function Hero({ handleNavigation }) {
                     <div className="flex justify-between items-center border-b border-slate-50 pb-2">
                       <div className="flex items-center gap-1.5">
                         <div className="w-8 h-8 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-[10px]">
-                          KK
+                          AS
                         </div>
                         <div>
-                          <p className="text-[10px] font-bold text-dark">Ketan Kumar (AC Expert)</p>
+                          <p className="text-[10px] font-bold text-dark leading-tight">Anjeneya S. (Automation engineer)</p>
                           <div className="flex items-center gap-0.5 text-[8px] text-amber-500 mt-0.5">
                             <Star className="w-2.5 h-2.5 fill-current" />
                             <span>4.9 (120+ orders)</span>
@@ -228,7 +237,7 @@ export default function Hero({ handleNavigation }) {
                     <span className="text-[7px] font-bold">Bookings</span>
                   </div>
                   <div className="flex flex-col items-center gap-0.5">
-                    <Tv className="w-4 h-4" />
+                    <Wallet className="w-4 h-4" />
                     <span className="text-[7px] font-bold">Wallet</span>
                   </div>
                 </div>

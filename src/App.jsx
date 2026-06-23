@@ -9,26 +9,49 @@ import CTA from './components/CTA';
 import ContactForm from './components/ContactForm';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import TermsAndConditions from './components/TermsAndConditions';
+import Disclaimer from './components/Disclaimer';
 import Footer from './components/Footer';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home');
 
-  // Sync state with URL Hash for deep-linking and browser history support
+  // Sync state with URL Pathname for deep-linking and browser history support
   useEffect(() => {
-    const handleHashChange = () => {
+    const handleLocationChange = () => {
+      // Check if hash-based routing is used and redirect to path-based routing
       const hash = window.location.hash;
-      if (hash === '#/privacy') {
+      if (hash) {
+        if (hash === '#/privacy') {
+          window.history.replaceState({}, '', '/legal/privacy');
+        } else if (hash === '#/terms') {
+          window.history.replaceState({}, '', '/legal/terms');
+        } else if (hash === '#/disclaimer') {
+          window.history.replaceState({}, '', '/legal/disclaimer');
+        } else if (hash === '#/contact') {
+          window.history.replaceState({}, '', '/contact');
+        } else if (hash.startsWith('#/section/')) {
+          const sectionId = hash.replace('#/section/', '');
+          window.history.replaceState({}, '', `/section/${sectionId}`);
+        } else if (hash === '#/' || hash === '#') {
+          window.history.replaceState({}, '', '/');
+        }
+      }
+
+      const path = window.location.pathname;
+      if (path === '/legal/privacy') {
         setCurrentPage('privacy');
         window.scrollTo({ top: 0, behavior: 'instant' });
-      } else if (hash === '#/contact') {
+      } else if (path === '/contact') {
         setCurrentPage('contact');
         window.scrollTo({ top: 0, behavior: 'instant' });
-      } else if (hash === '#/terms') {
+      } else if (path === '/legal/terms') {
         setCurrentPage('terms');
         window.scrollTo({ top: 0, behavior: 'instant' });
-      } else if (hash.startsWith('#/section/')) {
-        const sectionId = hash.replace('#/section/', '');
+      } else if (path === '/legal/disclaimer') {
+        setCurrentPage('disclaimer');
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      } else if (path.startsWith('/section/')) {
+        const sectionId = path.replace('/section/', '');
         setCurrentPage('home');
         setTimeout(() => {
           document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
@@ -40,29 +63,37 @@ export default function App() {
     };
 
     // Initial check
-    handleHashChange();
+    handleLocationChange();
 
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
+    window.addEventListener('popstate', handleLocationChange);
+    window.addEventListener('hashchange', handleLocationChange);
+    return () => {
+      window.removeEventListener('popstate', handleLocationChange);
+      window.removeEventListener('hashchange', handleLocationChange);
+    };
   }, []);
 
   const handleNavigation = (target, isSection = false) => {
     if (isSection) {
       // For sections on Home page
       if (currentPage !== 'home') {
-        window.location.hash = `#/section/${target}`;
+        window.history.pushState({}, '', `/section/${target}`);
+        window.dispatchEvent(new Event('popstate'));
       } else {
         document.getElementById(target)?.scrollIntoView({ behavior: 'smooth' });
       }
     } else {
       // For general page transitions
       if (target === 'home') {
-        window.location.hash = '';
+        window.history.pushState({}, '', '/');
       } else if (target === 'cta-download') {
         document.getElementById('cta-download')?.scrollIntoView({ behavior: 'smooth' });
+      } else if (target === 'privacy' || target === 'terms' || target === 'disclaimer') {
+        window.history.pushState({}, '', `/legal/${target}`);
       } else {
-        window.location.hash = `#/${target}`;
+        window.history.pushState({}, '', `/${target}`);
       }
+      window.dispatchEvent(new Event('popstate'));
     }
   };
 
@@ -103,6 +134,12 @@ export default function App() {
         {currentPage === 'terms' && (
           <div className="transition-all duration-500 ease-in-out">
             <TermsAndConditions />
+          </div>
+        )}
+
+        {currentPage === 'disclaimer' && (
+          <div className="transition-all duration-500 ease-in-out">
+            <Disclaimer />
           </div>
         )}
       </main>

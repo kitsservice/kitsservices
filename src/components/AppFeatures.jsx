@@ -8,7 +8,7 @@ export default function AppFeatures() {
     {
       icon: <Smartphone className="w-6 h-6 text-primary-light" />,
       title: 'Easy Booking',
-      desc: 'Book any household or business repair service in less than 60 seconds with an intuitive, step-by-step layout.',
+      desc: 'Book any industrial robotics, EV, biomedical, or automation maintenance service in less than 60 seconds with an intuitive, step-by-step layout.',
       screenContent: (
         <div className="bg-white h-full p-4 flex flex-col justify-between">
           <div className="border-b border-slate-100 pb-3 flex items-center justify-between">
@@ -17,12 +17,12 @@ export default function AppFeatures() {
           </div>
           <div className="space-y-3 my-auto">
             <div className="p-3 bg-blue-50 border border-blue-100 rounded-xl flex items-center justify-between">
-              <span className="text-xs font-semibold text-dark">Electrical Installation</span>
-              <span className="text-xs font-bold text-primary-light">$49</span>
+              <span className="text-xs font-semibold text-dark">Robotics Calibration</span>
+              <span className="text-xs font-bold text-primary-light">$249</span>
             </div>
             <div className="p-3 border border-slate-100 rounded-xl flex items-center justify-between opacity-60">
-              <span className="text-xs font-semibold text-dark">Sanitary Plumbing</span>
-              <span className="text-xs font-bold text-slate-400">$59</span>
+              <span className="text-xs font-semibold text-dark">EV Battery Diagnostic</span>
+              <span className="text-xs font-bold text-slate-400">$199</span>
             </div>
           </div>
           <button className="w-full bg-primary text-white text-xs font-bold py-3 rounded-xl shadow-md">
@@ -42,9 +42,9 @@ export default function AppFeatures() {
             <div className="w-full h-full bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:16px_16px]"></div>
           </div>
           <div className="relative z-10 border-b border-slate-100 bg-white/85 backdrop-blur-md p-2 rounded-xl flex items-center gap-2">
-            <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white text-xs font-bold">KT</div>
+            <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white text-xs font-bold">AS</div>
             <div>
-              <p className="text-[10px] font-bold text-dark">Ketan (Electrician)</p>
+              <p className="text-[10px] font-bold text-dark">Anjeneya (Automation engineer)</p>
               <p className="text-[8px] text-emerald-600 font-semibold">Arriving in 4 mins</p>
             </div>
           </div>
@@ -115,7 +115,7 @@ export default function AppFeatures() {
               <div className="w-2 h-2 rounded-full bg-primary-light mt-1.5 flex-shrink-0"></div>
               <div>
                 <p className="text-[9px] font-bold text-dark">Technician Assigned</p>
-                <p className="text-[8px] text-slate-500 mt-0.5">Electrician Ketan will arrive at 4:30 PM.</p>
+                <p className="text-[8px] text-slate-500 mt-0.5">Automation engineer Anjeneya will arrive at 4:30 PM.</p>
               </div>
             </div>
             <div className="p-2.5 border border-slate-100 rounded-xl flex gap-2 opacity-65">
@@ -139,14 +139,14 @@ export default function AppFeatures() {
           <div className="space-y-2 my-auto">
             <div className="p-2.5 border border-slate-100 rounded-xl flex items-center justify-between">
               <div>
-                <p className="text-[9px] font-bold text-dark">AC Deep Cleaning</p>
+                <p className="text-[9px] font-bold text-dark">Robotic Arm Alignment</p>
                 <p className="text-[7px] text-slate-400">June 20, 2026</p>
               </div>
               <span className="text-[8px] bg-slate-100 font-bold px-2 py-1 rounded text-slate-600 cursor-pointer">PDF</span>
             </div>
             <div className="p-2.5 border border-slate-100 rounded-xl flex items-center justify-between">
               <div>
-                <p className="text-[9px] font-bold text-dark">Plumbing Overhaul</p>
+                <p className="text-[9px] font-bold text-dark">SCADA Logic Optimization</p>
                 <p className="text-[7px] text-slate-400">May 15, 2026</p>
               </div>
               <span className="text-[8px] bg-slate-100 font-bold px-2 py-1 rounded text-slate-600 cursor-pointer">PDF</span>

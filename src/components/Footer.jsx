@@ -131,6 +131,14 @@ export default function Footer({ handleNavigation }) {
                   Terms & Conditions
                 </button>
               </li>
+              <li>
+                <button
+                  onClick={() => handleLinkClick('disclaimer')}
+                  className="hover:text-white transition-colors cursor-pointer text-left"
+                >
+                  Disclaimer
+                </button>
+              </li>
             </ul>
           </div>
 
@@ -174,8 +182,9 @@ export default function Footer({ handleNavigation }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p>© {currentYear} KITS Service. All rights reserved.</p>
           <div className="flex gap-6">
-            <a href="#/privacy" onClick={(e) => { e.preventDefault(); handleLinkClick('privacy'); }} className="hover:text-slate-400">Privacy Policy</a>
-            <a href="#/terms" onClick={(e) => { e.preventDefault(); handleLinkClick('terms'); }} className="hover:text-slate-400">Terms & Conditions</a>
+            <a href="/legal/privacy" onClick={(e) => { e.preventDefault(); handleLinkClick('privacy'); }} className="hover:text-slate-400">Privacy Policy</a>
+            <a href="/legal/terms" onClick={(e) => { e.preventDefault(); handleLinkClick('terms'); }} className="hover:text-slate-400">Terms & Conditions</a>
+            <a href="/legal/disclaimer" onClick={(e) => { e.preventDefault(); handleLinkClick('disclaimer'); }} className="hover:text-slate-400">Disclaimer</a>
           </div>
         </div>
       </div>
