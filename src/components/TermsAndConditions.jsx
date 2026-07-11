@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Shield, Scale, ChevronRight, Mail } from 'lucide-react';
+import { Scale, ChevronRight, Mail } from 'lucide-react';
 
 export default function TermsAndConditions() {
   const sections = [

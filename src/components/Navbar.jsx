@@ -14,7 +14,8 @@ export default function Navbar({ currentPage, handleNavigation }) {
         setIsScrolled(false);
       }
     };
-    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -37,7 +38,7 @@ export default function Navbar({ currentPage, handleNavigation }) {
   };
 
   return (
-    <nav
+    <nav aria-label="Primary navigation"
       className={`sticky top-0 z-50 transition-all duration-300 ${
         isScrolled ? 'glass-nav shadow-md py-3' : 'bg-transparent py-5'
       }`}
@@ -45,7 +46,9 @@ export default function Navbar({ currentPage, handleNavigation }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div
+          <button
+            type="button"
+            aria-label="KITS Service home"
             className="flex items-center gap-2.5 cursor-pointer group"
             onClick={() => handleNavigation('home')}
           >
@@ -55,7 +58,7 @@ export default function Navbar({ currentPage, handleNavigation }) {
             <span className="font-heading font-extrabold text-2xl tracking-tight text-dark">
               KITS <span className="text-primary-light">Service</span>
             </span>
-          </div>
+          </button>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
@@ -68,6 +71,7 @@ export default function Navbar({ currentPage, handleNavigation }) {
 
                 return (
                   <button
+                    type="button"
                     key={link.name}
                     onClick={() => handleClick(link)}
                     className={`font-semibold text-sm transition-colors duration-200 cursor-pointer ${
@@ -82,6 +86,7 @@ export default function Navbar({ currentPage, handleNavigation }) {
               })}
             </div>
             <button
+              type="button"
               onClick={() => handleNavigation('cta-download')}
               className="flex items-center gap-2 bg-primary hover:bg-primary-light text-white font-bold py-2.5 px-5 rounded-xl shadow-lg hover:shadow-primary-light/20 transition-all duration-300 cursor-pointer text-sm"
             >
@@ -93,6 +98,10 @@ export default function Navbar({ currentPage, handleNavigation }) {
           {/* Mobile menu button */}
           <div className="md:hidden">
             <button
+              type="button"
+              aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
+              aria-expanded={isOpen}
+              aria-controls="mobile-navigation"
               onClick={() => setIsOpen(!isOpen)}
               className="text-slate-700 hover:text-primary p-2 rounded-lg transition-colors cursor-pointer"
             >
@@ -104,6 +113,7 @@ export default function Navbar({ currentPage, handleNavigation }) {
 
       {/* Mobile Menu */}
       <div
+        id="mobile-navigation"
         className={`md:hidden absolute top-full left-0 w-full bg-white/95 backdrop-blur-lg shadow-xl border-t border-slate-100 transition-all duration-300 ease-in-out ${
           isOpen
             ? 'opacity-100 translate-y-0 visible'
@@ -119,6 +129,7 @@ export default function Navbar({ currentPage, handleNavigation }) {
 
             return (
               <button
+                type="button"
                 key={link.name}
                 onClick={() => handleClick(link)}
                 className={`block w-full text-left px-4 py-3 rounded-lg text-base font-semibold transition-all cursor-pointer ${
@@ -133,6 +144,7 @@ export default function Navbar({ currentPage, handleNavigation }) {
           })}
           <div className="pt-4 px-4">
             <button
+              type="button"
               onClick={() => {
                 setIsOpen(false);
                 handleNavigation('cta-download');

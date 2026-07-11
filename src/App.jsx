@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { lazy, Suspense, useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -6,11 +6,12 @@ import Services from './components/Services';
 import WhyChooseUs from './components/WhyChooseUs';
 import AppFeatures from './components/AppFeatures';
 import CTA from './components/CTA';
-import ContactForm from './components/ContactForm';
-import PrivacyPolicy from './components/PrivacyPolicy';
-import TermsAndConditions from './components/TermsAndConditions';
-import Disclaimer from './components/Disclaimer';
 import Footer from './components/Footer';
+
+const ContactForm = lazy(() => import('./components/ContactForm'));
+const PrivacyPolicy = lazy(() => import('./components/PrivacyPolicy'));
+const TermsAndConditions = lazy(() => import('./components/TermsAndConditions'));
+const Disclaimer = lazy(() => import('./components/Disclaimer'));
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -107,7 +108,7 @@ export default function App() {
       />
 
       {/* Main content page area */}
-      <main className="flex-grow">
+      <main id="main-content" className="flex-grow">
         {currentPage === 'home' && (
           <div className="transition-all duration-500 ease-in-out">
             <Hero handleNavigation={handleNavigation} />
@@ -119,6 +120,7 @@ export default function App() {
           </div>
         )}
 
+        <Suspense fallback={<div className="min-h-[50vh] grid place-items-center" role="status">Loading…</div>}>
         {currentPage === 'contact' && (
           <div className="transition-all duration-500 ease-in-out">
             <ContactForm />
@@ -142,6 +144,7 @@ export default function App() {
             <Disclaimer />
           </div>
         )}
+        </Suspense>
       </main>
 
       {/* Footer */}

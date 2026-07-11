@@ -19,7 +19,11 @@ html {
 
 body {
   font-family: var(--font-sans);
+  margin: 0;
 }
+
+button, a { outline-offset: 3px; }
+button:focus-visible, a:focus-visible { outline: 3px solid #06b6d4; }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
@@ -58,6 +62,16 @@ h1, h2, h3, h4, h5, h6 {
 
 .animate-float {
   animation: float 6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 .animation-delay-150 {

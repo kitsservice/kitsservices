@@ -1,4 +1,4 @@
-import { ArrowRight, Play, ArrowUpRight, Search, Bell, MapPin, Star, ShieldCheck, Bot, Zap, Activity, Settings, Compass, Navigation, Wallet } from 'lucide-react';
+import { ArrowUpRight, Search, Bell, MapPin, Star, ShieldCheck, Bot, Zap, Activity, Settings, Compass, Navigation, Wallet } from 'lucide-react';
 
 export default function Hero({ handleNavigation }) {
   return (
