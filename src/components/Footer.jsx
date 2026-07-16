@@ -1,4 +1,5 @@
-import { Shield, Mail } from 'lucide-react';
+import { Mail } from 'lucide-react';
+import logoImg from '../assets/logo.png';
 
 const FacebookIcon = (props) => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
@@ -45,15 +46,15 @@ export default function Footer({ handleNavigation }) {
           {/* Column 1: Brand Info */}
           <div className="space-y-4">
             <div
-              className="flex items-center gap-2 cursor-pointer group"
+              className="inline-flex items-center cursor-pointer group bg-white hover:bg-slate-50 rounded-2xl px-3 py-2 transition-all duration-300 shadow-sm"
               onClick={() => handleLinkClick('home')}
             >
-              <div className="bg-primary text-white p-2 rounded-xl">
-                <Shield className="w-5 h-5 text-cyan-400 fill-cyan-400/10" />
-              </div>
-              <span className="font-heading font-extrabold text-xl tracking-tight text-white">
-                KITS <span className="text-primary-light">Service</span>
-              </span>
+              <img
+                src={logoImg}
+                alt="KITS Service & Maintenance"
+                className="h-12 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
+                draggable={false}
+              />
             </div>
             <p className="text-sm leading-relaxed text-slate-400">
               The official web portal for KITS Service mobile app. Dispatched, vetted, and background-checked technicians for your household and business repair needs.

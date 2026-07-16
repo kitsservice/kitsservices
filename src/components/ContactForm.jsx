@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Mail, Clock, Headphones, CheckCircle2, AlertTriangle, Send } from 'lucide-react';
 
 export default function ContactForm() {
@@ -13,6 +13,9 @@ export default function ContactForm() {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+  const submitTimerRef = useRef(null);
+
+  useEffect(() => () => window.clearTimeout(submitTimerRef.current), []);
 
   // Real-time validation
   const validateField = (name, value) => {
@@ -62,7 +65,7 @@ export default function ContactForm() {
 
     // Submit form mock simulation
     setIsSubmitting(true);
-    setTimeout(() => {
+    submitTimerRef.current = window.setTimeout(() => {
       setIsSubmitting(false);
       setSubmitSuccess(true);
       setFormData({
@@ -163,6 +166,7 @@ export default function ContactForm() {
                     Thank you for contacting KITS Service. We have received your query and will reply to your support email within 2 hours.
                   </p>
                   <button
+                    type="button"
                     onClick={() => setSubmitSuccess(false)}
                     className="mt-8 bg-primary hover:bg-primary-light text-white font-bold py-2.5 px-6 rounded-xl transition-all cursor-pointer"
                   >
@@ -186,6 +190,10 @@ export default function ContactForm() {
                     type="text"
                     id="fullName"
                     name="fullName"
+                    autoComplete="name"
+                    required
+                    aria-invalid={Boolean(errors.fullName)}
+                    aria-describedby={errors.fullName ? 'fullName-error' : undefined}
                     value={formData.fullName}
                     onChange={handleChange}
                     className={`w-full px-4 py-3 rounded-xl border bg-slate-50/50 focus:bg-white text-sm focus:outline-none transition-all duration-200 ${
@@ -196,7 +204,7 @@ export default function ContactForm() {
                     placeholder="John Doe"
                   />
                   {errors.fullName && (
-                    <p className="flex items-center gap-1.5 text-xs text-rose-500 mt-2 font-medium">
+                    <p id="fullName-error" role="alert" className="flex items-center gap-1.5 text-xs text-rose-500 mt-2 font-medium">
                       <AlertTriangle className="w-3.5 h-3.5" />
                       {errors.fullName}
                     </p>
@@ -213,6 +221,10 @@ export default function ContactForm() {
                       type="email"
                       id="email"
                       name="email"
+                      autoComplete="email"
+                      required
+                      aria-invalid={Boolean(errors.email)}
+                      aria-describedby={errors.email ? 'email-error' : undefined}
                       value={formData.email}
                       onChange={handleChange}
                       className={`w-full px-4 py-3 rounded-xl border bg-slate-50/50 focus:bg-white text-sm focus:outline-none transition-all duration-200 ${
@@ -223,7 +235,7 @@ export default function ContactForm() {
                       placeholder="john@example.com"
                     />
                     {errors.email && (
-                      <p className="flex items-center gap-1.5 text-xs text-rose-500 mt-2 font-medium">
+                      <p id="email-error" role="alert" className="flex items-center gap-1.5 text-xs text-rose-500 mt-2 font-medium">
                         <AlertTriangle className="w-3.5 h-3.5" />
                         {errors.email}
                       </p>
@@ -238,6 +250,12 @@ export default function ContactForm() {
                       type="tel"
                       id="mobileNumber"
                       name="mobileNumber"
+                      autoComplete="tel"
+                      inputMode="numeric"
+                      maxLength={10}
+                      required
+                      aria-invalid={Boolean(errors.mobileNumber)}
+                      aria-describedby={errors.mobileNumber ? 'mobileNumber-error' : undefined}
                       value={formData.mobileNumber}
                       onChange={handleChange}
                       className={`w-full px-4 py-3 rounded-xl border bg-slate-50/50 focus:bg-white text-sm focus:outline-none transition-all duration-200 ${
@@ -248,7 +266,7 @@ export default function ContactForm() {
                       placeholder="9876543210"
                     />
                     {errors.mobileNumber && (
-                      <p className="flex items-center gap-1.5 text-xs text-rose-500 mt-2 font-medium">
+                      <p id="mobileNumber-error" role="alert" className="flex items-center gap-1.5 text-xs text-rose-500 mt-2 font-medium">
                         <AlertTriangle className="w-3.5 h-3.5" />
                         {errors.mobileNumber}
                       </p>
@@ -265,6 +283,9 @@ export default function ContactForm() {
                     type="text"
                     id="subject"
                     name="subject"
+                    required
+                    aria-invalid={Boolean(errors.subject)}
+                    aria-describedby={errors.subject ? 'subject-error' : undefined}
                     value={formData.subject}
                     onChange={handleChange}
                     className={`w-full px-4 py-3 rounded-xl border bg-slate-50/50 focus:bg-white text-sm focus:outline-none transition-all duration-200 ${
@@ -275,7 +296,7 @@ export default function ContactForm() {
                     placeholder="Query regarding appliance repair warranty"
                   />
                   {errors.subject && (
-                    <p className="flex items-center gap-1.5 text-xs text-rose-500 mt-2 font-medium">
+                    <p id="subject-error" role="alert" className="flex items-center gap-1.5 text-xs text-rose-500 mt-2 font-medium">
                       <AlertTriangle className="w-3.5 h-3.5" />
                       {errors.subject}
                     </p>
@@ -290,6 +311,10 @@ export default function ContactForm() {
                   <textarea
                     id="message"
                     name="message"
+                    required
+                    minLength={15}
+                    aria-invalid={Boolean(errors.message)}
+                    aria-describedby={errors.message ? 'message-error' : undefined}
                     rows="5"
                     value={formData.message}
                     onChange={handleChange}
@@ -301,7 +326,7 @@ export default function ContactForm() {
                     placeholder="Write details of your question here. Min 15 characters..."
                   ></textarea>
                   {errors.message && (
-                    <p className="flex items-center gap-1.5 text-xs text-rose-500 mt-2 font-medium">
+                    <p id="message-error" role="alert" className="flex items-center gap-1.5 text-xs text-rose-500 mt-2 font-medium">
                       <AlertTriangle className="w-3.5 h-3.5" />
                       {errors.message}
                     </p>

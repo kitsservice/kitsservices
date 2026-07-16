@@ -1,13 +1,31 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <title>KITS Service</title>
-  <defs>
-    <linearGradient id="bg" x1="8" y1="4" x2="56" y2="60" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#2563eb"/>
-      <stop offset="1" stop-color="#172554"/>
-    </linearGradient>
-  </defs>
-  <rect width="64" height="64" rx="15" fill="url(#bg)"/>
-  <path d="M32 10 50 17v13c0 12-7.4 20.4-18 25-10.6-4.6-18-13-18-25V17l18-7Z" fill="#fff"/>
-  <path d="M32 16 44 20.7v9.1c0 8.1-4.5 14.3-12 18.2-7.5-3.9-12-10.1-12-18.2v-9.1L32 16Z" fill="#06b6d4"/>
-  <path d="M27 23v18h4.5v-6l5.2 6H42l-7.5-9.3 7-8.7h-5.2l-4.8 6v-6H27Z" fill="#172554"/>
+  <title>KITS Service &amp; Maintenance</title>
+
+  <!-- White rounded background -->
+  <rect width="64" height="64" rx="12" fill="white"/>
+
+  <!-- Dark navy gear ring -->
+  <circle cx="28" cy="28" r="23" fill="#1a2a5e"/>
+  <!-- Gear inner hole -->
+  <circle cx="28" cy="28" r="14" fill="white"/>
+
+  <!-- Gear teeth — 8 teeth evenly spread -->
+  <rect x="24.5" y="2" width="7" height="9" rx="2.5" fill="#1a2a5e"/>
+  <rect x="24.5" y="2" width="7" height="9" rx="2.5" fill="#1a2a5e" transform="rotate(45 28 28)"/>
+  <rect x="24.5" y="2" width="7" height="9" rx="2.5" fill="#1a2a5e" transform="rotate(90 28 28)"/>
+  <rect x="24.5" y="2" width="7" height="9" rx="2.5" fill="#1a2a5e" transform="rotate(135 28 28)"/>
+  <rect x="24.5" y="2" width="7" height="9" rx="2.5" fill="#1a2a5e" transform="rotate(180 28 28)"/>
+  <rect x="24.5" y="2" width="7" height="9" rx="2.5" fill="#1a2a5e" transform="rotate(225 28 28)"/>
+  <rect x="24.5" y="2" width="7" height="9" rx="2.5" fill="#1a2a5e" transform="rotate(270 28 28)"/>
+  <rect x="24.5" y="2" width="7" height="9" rx="2.5" fill="#1a2a5e" transform="rotate(315 28 28)"/>
+
+  <!-- Orange swoosh arc (signature element from logo) -->
+  <path d="M 14,16 Q 16,28 20,40" stroke="#e85d04" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+
+  <!-- K letter centred in hole -->
+  <text x="21" y="37" font-family="'Arial Black', Impact, sans-serif" font-size="19" font-weight="900" fill="#1a2a5e">K</text>
+
+  <!-- KITS text at bottom right of the icon -->
+  <rect x="43" y="44" width="19" height="18" rx="4" fill="#e85d04"/>
+  <text x="52.5" y="57" font-family="'Arial Black', sans-serif" font-size="9" font-weight="900" fill="white" text-anchor="middle" letter-spacing="0.5">KSM</text>
 </svg>

@@ -1,4 +1,4 @@
-import { lazy, Suspense, useState, useEffect } from 'react';
+import { lazy, Suspense, useState, useEffect, useRef } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -15,6 +15,7 @@ const Disclaimer = lazy(() => import('./components/Disclaimer'));
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home');
+  const sectionTimerRef = useRef(null);
 
   // Sync state with URL Pathname for deep-linking and browser history support
   useEffect(() => {
@@ -54,7 +55,8 @@ export default function App() {
       } else if (path.startsWith('/section/')) {
         const sectionId = path.replace('/section/', '');
         setCurrentPage('home');
-        setTimeout(() => {
+        window.clearTimeout(sectionTimerRef.current);
+        sectionTimerRef.current = window.setTimeout(() => {
           document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
         }, 100);
       } else {
@@ -69,6 +71,7 @@ export default function App() {
     window.addEventListener('popstate', handleLocationChange);
     window.addEventListener('hashchange', handleLocationChange);
     return () => {
+      window.clearTimeout(sectionTimerRef.current);
       window.removeEventListener('popstate', handleLocationChange);
       window.removeEventListener('hashchange', handleLocationChange);
     };
@@ -88,7 +91,12 @@ export default function App() {
       if (target === 'home') {
         window.history.pushState({}, '', '/');
       } else if (target === 'cta-download') {
-        document.getElementById('cta-download')?.scrollIntoView({ behavior: 'smooth' });
+        if (currentPage !== 'home') {
+          window.history.pushState({}, '', '/section/cta-download');
+        } else {
+          document.getElementById('cta-download')?.scrollIntoView({ behavior: 'smooth' });
+          return;
+        }
       } else if (target === 'privacy' || target === 'terms' || target === 'disclaimer') {
         window.history.pushState({}, '', `/legal/${target}`);
       } else {
