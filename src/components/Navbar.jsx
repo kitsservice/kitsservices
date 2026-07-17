@@ -83,14 +83,15 @@ export default function Navbar({ currentPage, handleNavigation }) {
                 );
               })}
             </div>
-            <button
-              type="button"
-              onClick={() => handleNavigation('cta-download')}
+            <a
+              href="https://play.google.com/store/apps/details?id=com.kits.kits_service&pcampaignid=web_share"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-2 bg-primary hover:bg-primary-light text-white font-bold py-2.5 px-5 rounded-xl shadow-lg hover:shadow-primary-light/20 transition-all duration-300 cursor-pointer text-sm whitespace-nowrap"
             >
               <Download className="w-4 h-4" />
               Download App
-            </button>
+            </a>
           </div>
 
           {/* Mobile menu button */}
@@ -141,17 +142,15 @@ export default function Navbar({ currentPage, handleNavigation }) {
             );
           })}
           <div className="pt-3 px-4">
-            <button
-              type="button"
-              onClick={() => {
-                setIsOpen(false);
-                handleNavigation('cta-download');
-              }}
+            <a
+              href="https://play.google.com/store/apps/details?id=com.kits.kits_service&pcampaignid=web_share"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 w-full bg-primary hover:bg-primary-light text-white font-bold py-3 px-4 rounded-xl shadow-md transition-all cursor-pointer"
             >
               <Download className="w-5 h-5" />
               Download App
-            </button>
+            </a>
           </div>
         </div>
       </div>

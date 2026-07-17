@@ -31,10 +31,12 @@ export default function Hero({ handleNavigation }) {
             {/* CTAs */}
             <div className="mt-6 sm:mt-8 flex flex-wrap gap-3 sm:gap-4 justify-center lg:justify-start">
 
-              {/* Styled Mock Google Play button */}
-              <button
-                onClick={() => handleNavigation('cta-download')}
-                className="flex items-center gap-3 bg-slate-900 hover:bg-slate-950 text-white font-bold py-2.5 px-4 rounded-xl shadow-lg hover:-translate-y-0.5 transition-all duration-300 cursor-pointer text-left border border-slate-800"
+              {/* Google Play Store — Live Link */}
+              <a
+                href="https://play.google.com/store/apps/details?id=com.kits.kits_service&pcampaignid=web_share"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 bg-slate-900 hover:bg-slate-700 text-white font-bold py-2.5 px-4 rounded-xl shadow-lg hover:-translate-y-0.5 transition-all duration-300 cursor-pointer text-left border border-slate-800"
               >
                 <svg className="w-5 h-5 text-white fill-current flex-shrink-0" viewBox="0 0 24 24">
                   <path d="M5,3H19A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5A2,2 0 0,1 3,3M17.5,12L8.5,7V17L17.5,12Z" />
@@ -43,21 +45,21 @@ export default function Hero({ handleNavigation }) {
                   <p className="text-[8px] uppercase font-bold text-slate-400 leading-none">Get it on</p>
                   <p className="text-xs font-extrabold font-heading tracking-wide mt-0.5">Google Play</p>
                 </div>
-              </button>
+              </a>
 
-              {/* Styled Mock App Store button */}
-              <button
-                onClick={() => handleNavigation('cta-download')}
-                className="flex items-center gap-3 bg-slate-900 hover:bg-slate-950 text-white font-bold py-2.5 px-4 rounded-xl shadow-lg hover:-translate-y-0.5 transition-all duration-300 cursor-pointer text-left border border-slate-800"
+              {/* App Store — Coming Soon */}
+              <div
+                title="iOS App coming soon"
+                className="flex items-center gap-3 bg-slate-900/50 text-white/50 font-bold py-2.5 px-4 rounded-xl border border-slate-800/50 text-left cursor-not-allowed select-none"
               >
-                <svg className="w-5 h-5 text-white fill-current flex-shrink-0" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 fill-current flex-shrink-0" viewBox="0 0 24 24">
                   <path d="M18.71,19.5C17.88,20.74 17,21.95 15.66,21.97C14.32,22 13.89,21.18 12.37,21.18C10.84,21.18 10.37,21.95 9.1,22C7.79,22.05 6.8,20.68 5.96,19.47C4.25,17 2.94,12.45 4.7,9.39C5.57,7.87 7.13,6.91 8.82,6.88C10.1,6.86 11.32,7.75 12.11,7.75C12.89,7.75 14.37,6.68 15.92,6.84C16.57,6.87 18.39,7.1 19.56,8.82C19.47,8.88 17.39,10.1 17.41,12.63C17.44,15.65 20.06,16.66 20.1,16.67C20.08,16.74 19.67,18.11 18.71,19.5M15.97,4.17C16.63,3.37 17.07,2.28 16.95,1C16,1.04 14.9,1.6 14.24,2.38C13.68,3.04 13.19,4.14 13.34,5.39C14.39,5.47 15.4,4.88 15.97,4.17Z" />
                 </svg>
                 <div>
-                  <p className="text-[8px] uppercase font-bold text-slate-400 leading-none">Download on the</p>
-                  <p className="text-xs font-extrabold font-heading tracking-wide mt-0.5">App Store</p>
+                  <p className="text-[8px] uppercase font-bold leading-none">Download on the</p>
+                  <p className="text-xs font-extrabold font-heading tracking-wide mt-0.5">App Store <span className="text-[8px] font-normal opacity-70">• Soon</span></p>
                 </div>
-              </button>
+              </div>
 
               <button
                 onClick={() => handleNavigation('contact')}
